@@ -32,6 +32,7 @@ extern const void *DVANestedPageViewControllerPositionKey;
 
 @interface DVANestedPageViewController : UIViewController
 
+@property (nonatomic, readonly) UIPageViewController *pageViewController;
 @property (nonatomic, strong, readonly) NSIndexPath *currentIndexPath;
 @property (nonatomic, weak) IBOutlet id<DVANestedPageViewControllerDataSource> dataSource;
 @property (nonatomic, weak) IBOutlet id<DVANestedPageViewControllerDelegate> delegate;
