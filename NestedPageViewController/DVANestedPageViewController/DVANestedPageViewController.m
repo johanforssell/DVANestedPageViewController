@@ -39,7 +39,21 @@ const void *DVANestedPageViewControllerPositionKey = &DVANestedPageViewControlle
     [self.pageViewController didMoveToParentViewController:self];
     [self.view addSubview:self.pageViewController.view];
     
+    [self addAutolayoutConstraints];
+
     [self loadViewControllers];
+}
+
+- (void)addAutolayoutConstraints
+{
+    self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *constraint2 = [NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:1.0 constant:-60.0];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0];
+    
+    [self.view addConstraints:@[constraint1, constraint2, constraint3, constraint4]];
 }
 
 - (void)dealloc
